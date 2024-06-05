@@ -5,7 +5,7 @@ import tkinter as tk
 from tkinter import filedialog
 
 # Expressão regular
-padrao = r'Nº DESENHO ANTT: ECA-\d{3}[A-Z]{2}-\d{3}-\d{3}-\d{3}-\d{3}-\d{2}-\d{2}-\d{3}'
+padrao = r'[A-Z]{3}-\d{3}[A-Z]{2}-\d{3}-\d{3}-[A-Z]{3}-[A-Z]{3}-[A-Z]{2}-[A-Z]\d-\d{3}'
 regex = re.compile(padrao)
 
 def selecionar_pasta():
