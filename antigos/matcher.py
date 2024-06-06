@@ -30,7 +30,7 @@ def selecionar_pasta():
             for linha in f:
                 encontrados = regex.findall(linha)
                 for match in encontrados:
-                    matches.append(f"{nome_arquivo}: {match}")
+                    matches.append(f"{match}")
 
     with open(arquivo_saida, 'w', encoding="utf-8") as f:
         for match in matches:

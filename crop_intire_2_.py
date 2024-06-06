@@ -4,7 +4,7 @@ from PIL import Image
 import tkinter as tk
 from tkinter import filedialog
 
-def pdf_to_full_png(pdf_path, output_dir, zoom_factor=10.0):
+def pdf_to_full_png(pdf_path, output_dir, zoom_factor=5.0):
     # Abrir o documento PDF
     pdf_document = fitz.open(pdf_path)
     
@@ -29,7 +29,7 @@ def pdf_to_full_png(pdf_path, output_dir, zoom_factor=10.0):
 
     print(f"Todas as páginas do arquivo {pdf_name} foram processadas e salvas.")
 
-def process_all_pdfs_in_directory(input_dir, output_dir, zoom_factor=2.0):
+def process_all_pdfs_in_directory(input_dir, output_dir, zoom_factor=5.0):
     # Verificar se o diretório de saída existe, se não, criar
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)
