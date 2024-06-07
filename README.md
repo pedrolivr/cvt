@@ -15,5 +15,9 @@ GIT STATUS (Mostra as atualizações que foram feitas)
 GIT ADD . (Adiciona as mudanças na fila para subir para a nuvem)  
 GIT COMMIT -M "COMENTÁRIO" (Adiciona um comentário para a mudança feita)  
 GIT PUSH (Envia atualizações da máquina para o repositório central)  
+# PROCESSO DE UTILIZAÇÃO  
+1 - EXECUTAR O CROP_INTIRE (GERA IMAGENS PARA CADA PDF) APONTAR PARA A PASTA QUE CONTÉM OS PDFS DE ANÁLISE  
+2 - EXECUTAR O COMPILER (IRÁ LER AS IMAGENS DO DIRETÓRIO APONTADO)  
+3 - EXECUTAR O MATCHER (IRÁ FAZER UM RELATÓRIO APENAS DOS KMS)
 
 
