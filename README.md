@@ -7,7 +7,7 @@ Programa que gera imagens dos PDFs, lê os textos e organiza em uma estrutura de
 *TESSERACT* - [TESSERACT](https://github.com/UB-Mannheim/tesseract/wiki)  
 # BIBLIOTECAS  
 *CAMINHO WINDOWS:* %ProgramFiles%\Python312\Scripts  
-*PIPs:* pip install pymupdf pillow opencv-python pytesseract pandas  
+*PIPs:* pip install pymupdf pillow opencv-python pytesseract pandas  tqdm  
 # COMANDOS GIT  
 GIT CLONE https://github.com/pedrolivr/cvt  
 GIT PULL (atualiza o local da máquina de acordo com o repositório na nuvem)  
