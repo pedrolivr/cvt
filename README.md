@@ -1,6 +1,6 @@
 # ORIENTAÇÕES INICIAIS - CVT (Cropper, viewr and texter)
 ## PROGRAMAS E BIBLIOTECAS PARA INSTALAR
-*VS CODE* - portal da companhia
+*VS CODE* - portal da companhia \n
 *GIT* - portal da companhia
 *PYTHON* - portal da companhia
 *TESSERACT* - [TESSERACT](https://github.com/UB-Mannheim/tesseract/wiki)
