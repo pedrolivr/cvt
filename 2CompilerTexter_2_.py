@@ -4,6 +4,7 @@ import os
 import tkinter as tk
 from tkinter import filedialog
 import pandas as pd
+from tqdm import tqdm
 
 # Configurar o caminho do executável do Tesseract, se necessário
 pytesseract.pytesseract.tesseract_cmd = r'C:/Users/pe.oliveira/AppData/Local/Programs/Tesseract-OCR/tesseract.exe'
@@ -47,7 +48,7 @@ directory = select_directory()
 
 # Definir as regiões de interesse (ROIs)
 regions = [
-     # Exemplo de coordenadas (x, y, largura, altura)
+    # Exemplo de coordenadas (x, y, largura, altura)
     (3820, 2960, 900, 150),
     (3720, 3100, 300, 70),
     (4200, 3100, 500, 70),
@@ -56,30 +57,37 @@ regions = [
     (4200, 3250, 300, 70),
     (4, 3260, 150, 50),
     (4330,2570,400,50)
-
 ]
 
 # Lista para armazenar os dados para o Excel
 excel_data = []
 
-# Processar todas as imagens no diretório selecionado
-for filename in os.listdir(directory):
-    if filename.lower().endswith(('.png', '.jpg', '.jpeg')):
-        image_path = os.path.join(directory, filename)
-        output_file = os.path.join(directory, f'resultados_{os.path.splitext(filename)[0]}.txt')
-        
-        with open(output_file, 'w', encoding='utf-8') as file:
-            file.write(f'Resultados para {filename}:\n')
-            # Armazenar apenas os primeiros 35 caracteres do nome do arquivo
-            image_data = {"Imagem": filename[:35]}
-            for i, region in enumerate(regions):
-                text = read_text_from_region(image_path, region)
-                file.write(f'Texto da região {i + 1}:\n')
-                file.write(text)
-                file.write('\n' + '-' * 30 + '\n')
-                image_data[f'Região {i + 1}'] = text
-            file.write('\n' + '=' * 30 + '\n')
-            excel_data.append(image_data)
+# Obter o número total de imagens a serem processadas
+total_images = len([filename for filename in os.listdir(directory) if filename.lower().endswith(('.png', '.jpg', '.jpeg'))])
+
+# Criar uma barra de progresso única para todas as imagens
+with tqdm(total=total_images, desc="Processando imagens", unit="imagem") as pbar:
+    # Processar todas as imagens no diretório selecionado
+    for filename in os.listdir(directory):
+        if filename.lower().endswith(('.png', '.jpg', '.jpeg')):
+            image_path = os.path.join(directory, filename)
+            output_file = os.path.join(directory, f'resultados_{os.path.splitext(filename)[0]}.txt')
+            
+            with open(output_file, 'w', encoding='utf-8') as file:
+                file.write(f'Resultados para {filename}:\n')
+                # Armazenar apenas os primeiros 35 caracteres do nome do arquivo
+                image_data = {"Imagem": filename[:35]}
+                for i, region in enumerate(regions):
+                    text = read_text_from_region(image_path, region)
+                    file.write(f'Texto da região {i + 1}:\n')
+                    file.write(text)
+                    file.write('\n' + '-' * 30 + '\n')
+                    image_data[f'Região {i + 1}'] = text
+                file.write('\n' + '=' * 30 + '\n')
+                excel_data.append(image_data)
+            
+            # Atualizar a barra de progresso
+            pbar.update(1)
 
 # Criar um DataFrame do pandas e salvar como arquivo Excel
 df = pd.DataFrame(excel_data)
