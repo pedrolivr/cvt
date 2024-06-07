@@ -1,4 +1,5 @@
-# ORIENTAÇÕES INICIAIS - CVT (Cropper, viewr and texter)
+# ORIENTAÇÕES INICIAIS - CVT (Cropper, viewr and texter)  
+Programa que gera imagens dos PDFs, lê os textos e organiza em uma estrutura de tabela  
 ## PROGRAMAS E BIBLIOTECAS PARA INSTALAR
 *VS CODE* - portal da companhia  
 *GIT* - portal da companhia  
