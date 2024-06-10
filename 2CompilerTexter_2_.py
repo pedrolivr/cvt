@@ -47,20 +47,20 @@ def select_directory():
 directory = select_directory()
 
 # Definir as regiões de interesse (ROIs)
-regions = [
-    # Exemplo de coordenadas (x, y, largura, altura)
+
+regions = [# Exemplo de coordenadas (x, y, largura, altura)
     (3820, 2960, 900, 150),
     (3720, 3100, 300, 70),
     (4200, 3100, 500, 70),
     (3720, 3200, 900, 70),
     (3720, 3250, 300, 70),
     (4200, 3250, 300, 70),
-    (4, 3260, 150, 50),
+    (4,3260,150,50),
     (4330,2570,400,50),
     (3720,2700,500,150),
     (4225,2700,500, 150),
     (4300,2875,250, 70)
-]
+    ]
 
 # Lista para armazenar os dados para o Excel
 excel_data = []
