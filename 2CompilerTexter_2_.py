@@ -8,7 +8,7 @@ from tqdm import tqdm
 
 # Configurar o caminho do executável do Tesseract, se necessário
 pytesseract.pytesseract.tesseract_cmd = r'C:/Users/pe.oliveira/AppData/Local/Programs/Tesseract-OCR/tesseract.exe'
-
+##
 # Função para ler texto de uma região específica da imagem
 def read_text_from_region(image_path, region):
     """
