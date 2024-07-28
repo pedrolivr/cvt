@@ -48,7 +48,7 @@ def select_directory():
 directory = select_directory()
 
 # Especificar o caminho do template do Excel
-template_path = r'C:/Users/pe.oliveira/OneDrive - EGIS Group/Bureau/cvt/MODELO-RESPOSTAS-CARIMBO_R01.xlsx'
+template_path = r'C:/Users/pe.oliveira/OneDrive - EGIS Group/Bureau/cvt/MODELO-RESPOSTAS-CARIMBO_R01.xlsm'
 
 # Definir as regiões de interesse (ROIs)
 regions = [
@@ -62,7 +62,8 @@ regions = [
     (4330, 2570, 400, 50),
     (3720, 2700, 500, 150),
     (4225, 2700, 500, 150),
-    (4300, 2875, 250, 70)
+    (4300, 2875, 250, 70),
+    (4175, 2571, 150, 50)
 ]
 
 # Definir os títulos para cada região
@@ -78,7 +79,8 @@ region_titles = [
     "RESPONSÁVEL TÉCNICO CARIMBO",
     "LOGO ANTT CARIMBO",
     "LOGO CLIENTE CARIMBO",
-    "LOGO EGIS CARIMBO"
+    "LOGO EGIS CARIMBO",
+    "DATA CARIMBO"
 ]
 
 # Verificar se o número de títulos corresponde ao número de regiões
