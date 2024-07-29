@@ -10,3 +10,14 @@ PyMuPDF     1.24.9
 PyMuPDFb    1.24.9
 pytesseract 0.3.10
 tqdm        4.66.4
+------------------
+pip install colorama==0.4.6
+pip install et-xmlfile==1.1.0
+pip install openpyxl==3.1.5
+pip install packaging==24.1
+pip install pillow==10.4.0
+pip install pip==24.0
+pip install PyMuPDF==1.24.9
+pip install PyMuPDFb==1.24.9
+pip install pytesseract==0.3.10
+pip install tqdm==4.66.4
