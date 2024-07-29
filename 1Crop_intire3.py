@@ -3,7 +3,7 @@ import fitz  # PyMuPDF
 from PIL import Image
 import tkinter as tk
 from tkinter import filedialog
-from tqdm import tqdm
+from tqdm import tqdm 
 
 def pdf_to_full_png(pdf_path, output_dir, zoom_factor, pbar):
     # Abrir o documento PDF

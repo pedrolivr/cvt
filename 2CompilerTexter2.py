@@ -5,10 +5,10 @@ import tkinter as tk
 from tkinter import filedialog
 import pandas as pd
 from tqdm import tqdm
-from openpyxl import load_workbook
+from openpyxl import Workbook
 
 # Configurar o caminho do executável do Tesseract, se necessário
-pytesseract.pytesseract.tesseract_cmd = r'C:/Users/pe.oliveira/AppData/Local/Programs/Tesseract-OCR/tesseract.exe'
+pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
 
 # Função para ler texto de uma região específica da imagem
 def read_text_from_region(image_path, region):
@@ -47,9 +47,6 @@ def select_directory():
 # Selecionar o diretório contendo as imagens
 directory = select_directory()
 
-# Especificar o caminho do template do Excel
-template_path = r'C:/Users/pe.oliveira/OneDrive - EGIS Group/Bureau/cvt/MODELO-RESPOSTAS-CARIMBO_R01.xlsm'
-
 # Definir as regiões de interesse (ROIs)
 regions = [
     (3820, 2960, 900, 150),
@@ -68,7 +65,6 @@ regions = [
 
 # Definir os títulos para cada região
 region_titles = [
-
     "TÍTULO CARIMBO",
     "RODOVIA CARIMBO",
     "TRECHO CARIMBO",
@@ -118,27 +114,28 @@ with tqdm(total=total_images, desc="Processando imagens", unit="ARQUIVO") as pba
             # Atualizar a barra de progresso
             pbar.update(1)
 
-# Carregar o template do Excel
-workbook = load_workbook(template_path)
-sheet = workbook.active
+# Criar um novo arquivo Excel
+wb = Workbook()
+ws = wb.active
+ws.title = "Resultados"
 
-# Inserir os cabeçalhos no template
-sheet.cell(row=1, column=1, value="ID")
-sheet.cell(row=1, column=2, value="ARQUIVO")
+# Inserir os cabeçalhos
+ws.cell(row=1, column=1, value="ID")
+ws.cell(row=1, column=2, value="ARQUIVO")
 for col, title in enumerate(region_titles, start=3):
-    sheet.cell(row=1, column=col, value=title)
+    ws.cell(row=1, column=col, value=title)
 
-# Inserir os dados processados no template
+# Inserir os dados processados
 row = 2  # Assumindo que a primeira linha é o cabeçalho
 for data in excel_data:
-    sheet.cell(row=row, column=1, value=data["ID"])  # Índice
-    sheet.cell(row=row, column=2, value=data["ARQUIVO"])  # Nome da imagem
+    ws.cell(row=row, column=1, value=data["ID"])  # Índice
+    ws.cell(row=row, column=2, value=data["ARQUIVO"])  # Nome da imagem
     for col, title in enumerate(region_titles, start=3):
-        sheet.cell(row=row, column=col, value=data[title])  # Texto das regiões
+        ws.cell(row=row, column=col, value=data[title])  # Texto das regiões
     row += 1
 
-# Salvar o arquivo Excel com os dados inseridos
-excel_output_file = os.path.join(directory, 'resultados_com_template.xlsx')
-workbook.save(excel_output_file)
+# Salvar o arquivo Excel
+excel_output_file = os.path.join(directory, 'resultados.xlsx')
+wb.save(excel_output_file)
 
 print(f"Processamento concluído. Resultados exportados para arquivos de texto separados e para {excel_output_file}")
